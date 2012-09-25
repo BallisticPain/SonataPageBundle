@@ -68,6 +68,7 @@ class SonataPageExtension extends Extension
 
         $this->registerDoctrineMapping($config);
         $this->registerParameters($container, $config);
+        $this->registerAdminParameters($container, $config);
     }
 
     /**
@@ -85,6 +86,29 @@ class SonataPageExtension extends Extension
         $container->setParameter('sonata.page.admin.block.entity', $config['class']['block']);
         $container->setParameter('sonata.page.admin.snapshot.entity', $config['class']['snapshot']);
         $container->setParameter('sonata.page.admin.page.entity', $config['class']['page']);
+    }
+
+    /**
+     * @param \Symfony\Component\DependencyInjection\ContainerBuilder $container
+     * @param array                                                   $config
+     */
+    public function registerAdminParameters(ContainerBuilder $container, array $config)
+    {
+        $container->setParameter('sonata.page.admin.page.class',              $config['class']['site']);
+        $container->setParameter('sonata.page.admin.page.controller',         $config['class']['block']);
+        $container->setParameter('sonata.page.admin.page.translation_domain', $config['class']['snapshot']);
+
+        $container->setParameter('sonata.page.admin.site.class',              $config['class']['page']);
+        $container->setParameter('sonata.page.admin.site.controller',         $config['class']['site']);
+        $container->setParameter('sonata.page.admin.site.translation_domain', $config['class']['block']);
+        
+        $container->setParameter('sonata.page.admin.block.class',              $config['class']['snapshot']);
+        $container->setParameter('sonata.page.admin.block.controller',         $config['class']['page']);
+        $container->setParameter('sonata.page.admin.block.translation_domain', $config['class']['page']);
+        
+        $container->setParameter('sonata.page.admin.snapshot.class',              $config['class']['snapshot']);
+        $container->setParameter('sonata.page.admin.snapshot.controller',         $config['class']['page']);
+        $container->setParameter('sonata.page.admin.snapshot.translation_domain', $config['class']['page']);
     }
 
     /**

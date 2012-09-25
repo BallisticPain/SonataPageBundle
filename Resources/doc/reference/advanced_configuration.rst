@@ -53,6 +53,25 @@ Full configuration options (config.yml file):
             #    servers:
             #        - varnishadm -T 127.0.0.1:2000 {{ COMMAND }} "{{ EXPRESSION }}"
 
+        admin:
+            page:
+                class:       Sonata\PageBundle\Admin\PageAdmin
+                controller:  SonataPageBundle:PageAdmin
+                translation: SonataPageBundle
+            site:
+                class:       Sonata\PageBundle\Admin\SiteAdmin
+                controller:  SonataPageBundle:SiteAdmin
+                translation: SonataPageBundle
+            block:
+                class:       Sonata\PageBundle\Admin\BlockAdmin
+                controller:  SonataPageBundle:BlockAdmin
+                translation: SonataPageBundle
+            snapshot:
+                class:       Sonata\PageBundle\Admin\SnapshotAdmin
+                controller:  SonataPageBundle:SnapshotAdmin
+                translation: SonataPageBundle
+
+
 
     # Enable Doctrine to map the provided entities
     doctrine:
